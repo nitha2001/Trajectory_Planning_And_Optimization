@@ -61,6 +61,7 @@ In this section, we implement a trajectory optimization for a planar arm system 
 
 - Implemented kinematic constraints in kinematic_constraints.py to ensure that the ball lands at the desired distance from the robot's base.
 - Dynamic constraints are defined in dynamics_constraints.py to model the physical behavior of the system.
+  
 **Trajectory Execution:**
 
 - The trajectory is optimized to minimize input efforts while satisfying constraints on final position and velocity.
