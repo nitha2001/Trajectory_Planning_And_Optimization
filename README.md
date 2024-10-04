@@ -22,12 +22,12 @@ The iLQR algorithm is implemented in `iLQR.py`, where we focus on optimizing the
     - `hess_running_cost()`
     - `grad_terminal_cost()`
     - `hess_terminal_cost()`
-The backward pass is structured to compute the updates for 𝑔𝑘 and Hk as described in the problem set, ensuring numerical stability during optimization.
+- The backward pass is structured to compute the updates for **𝑔**𝑘 and **H**k as described in the problem set, ensuring numerical stability during optimization.
 
 **Forward Pass:**
 - The forward pass updates the trajectory based on the newly calculated control law:
     - Initializes with the previously estimated trajectory.
-    - Updates state and control inputs using the computed Kk and dk.
+    - Updates state and control inputs using the computed **K**k and **d**k.
     - The parameter 𝛼 controls the step size for stability.
 
 **Key Functions**
