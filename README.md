@@ -51,8 +51,8 @@ The Direct Collocation method approximates the state and input trajectories usin
   
 **Key Functions**
 
-`add_constraints()`: Enforces kinematic and dynamic constraints on the spline trajectory.
-`optimize_trajectory()`: Solves the optimization problem for the planar arm, ensuring that the trajectory satisfies all defined constraints.
+- `add_constraints()`: Enforces kinematic and dynamic constraints on the spline trajectory.
+- `optimize_trajectory()`: Solves the optimization problem for the planar arm, ensuring that the trajectory satisfies all defined constraints.
 
 ## Planar Arm Trajectory Optimization
 
