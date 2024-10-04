@@ -67,6 +67,7 @@ In this section, we implement a trajectory optimization for a planar arm system 
 - The trajectory is optimized to minimize input efforts while satisfying constraints on final position and velocity.
   
 **Key Functions**
+
 - `add_landing_constraints()`: Enforces constraints related to the landing position of the ball after release.
 - `add_final_state_constraints()`: Ensures the final configuration meets the required parameters.
 
