@@ -18,71 +18,53 @@ The iLQR algorithm is implemented in `iLQR.py`, where we focus on optimizing the
 
 - Implemented using the calculated derivatives of the running and terminal costs.
 - The gradient and Hessian of the cost function are computed using the following methods:
-    -grad_running_cost()
-hess_running_cost()
-grad_terminal_cost()
-hess_terminal_cost()
-The backward pass is structured to compute the updates for 
-𝑔
-𝑘
-g 
-k
-​
-  and 
-𝐻
-𝑘
-H 
-k
-​
-  as described in the problem set, ensuring numerical stability during optimization.
-Forward Pass:
+    - `grad_running_cost()`
+    - `hess_running_cost()`
+    - `grad_terminal_cost()`
+    - `hess_terminal_cost()`
+The backward pass is structured to compute the updates for 𝑔𝑘 and Hk as described in the problem set, ensuring numerical stability during optimization.
 
-The forward pass updates the trajectory based on the newly calculated control law:
-Initializes with the previously estimated trajectory.
-Updates state and control inputs using the computed 
-𝐾
-𝑘
-K 
-k
-​
-  and 
-𝑑
-𝑘
-d 
-k
-​
- .
-The parameter 
-𝛼
-α controls the step size for stability.
-Key Functions
-backward_pass(): Computes the necessary gradients and Hessians, updating control inputs.
-forward_pass(): Simulates the system dynamics forward in time using the updated control law.
+**Forward Pass:**
+- The forward pass updates the trajectory based on the newly calculated control law:
+    - Initializes with the previously estimated trajectory.
+    - Updates state and control inputs using the computed Kk and dk.
+    - The parameter 𝛼 controls the step size for stability.
 
-Direct Collocation Implementation
+**Key Functions**
+
+- `backward_pass()`: Computes the necessary gradients and Hessians, updating control inputs.
+- `forward_pass()`: Simulates the system dynamics forward in time using the updated control law.
+
+## Direct Collocation Implementation
+
 The Direct Collocation method approximates the state and input trajectories using cubic and linear splines, respectively. The implementation details include:
 
-Spline Coefficients:
+**Spline Coefficients:**
 
-Implemented the calculation of spline coefficients to satisfy the dynamics at the endpoints and midpoints.
-Midpoint dynamics are enforced by adding constraints based on the dynamics.
-Trajectory Optimization:
+- Implemented the calculation of spline coefficients to satisfy the dynamics at the endpoints and midpoints.
+- Midpoint dynamics are enforced by adding constraints based on the dynamics.
+  
+**Trajectory Optimization:**
 
-Utilizes a nonlinear program to minimize input effort while adhering to constraints on torque, velocity, and end effector position.
-Uses pydrake for constraint management and optimization formulation.
-Key Functions
-add_constraints(): Enforces kinematic and dynamic constraints on the spline trajectory.
-optimize_trajectory(): Solves the optimization problem for the planar arm, ensuring that the trajectory satisfies all defined constraints.
-Planar Arm Trajectory Optimization
+- Utilizes a nonlinear program to minimize input effort while adhering to constraints on torque, velocity, and end effector position.
+- Uses `pydrake` for constraint management and optimization formulation.
+  
+**Key Functions**
+`add_constraints()`: Enforces kinematic and dynamic constraints on the spline trajectory.
+`optimize_trajectory()`: Solves the optimization problem for the planar arm, ensuring that the trajectory satisfies all defined constraints.
+
+## Planar Arm Trajectory Optimization
+
 In this section, we implement a trajectory optimization for a planar arm system with a ball at the end effector. The key tasks include:
 
-Setting Up Constraints:
+**Setting Up Constraints:**
 
-Implemented kinematic constraints in kinematic_constraints.py to ensure that the ball lands at the desired distance from the robot's base.
-Dynamic constraints are defined in dynamics_constraints.py to model the physical behavior of the system.
-Trajectory Execution:
+- Implemented kinematic constraints in kinematic_constraints.py to ensure that the ball lands at the desired distance from the robot's base.
+- Dynamic constraints are defined in dynamics_constraints.py to model the physical behavior of the system.
+**Trajectory Execution:**
 
-The trajectory is optimized to minimize input efforts while satisfying constraints on final position and velocity.
-Key Functions
-add_landing_constraints(): Enforces constraints related to the landing position of the ball after release.
-add_final_state_constraints(): Ensures the final configuration meets the required parameters.
+- The trajectory is optimized to minimize input efforts while satisfying constraints on final position and velocity.
+  
+**Key Functions**
+- `add_landing_constraints()`: Enforces constraints related to the landing position of the ball after release.
+- `add_final_state_constraints()`: Ensures the final configuration meets the required parameters.
