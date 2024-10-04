@@ -11,7 +11,7 @@ The project is organized into several Python files, each addressing a specific a
 - `dynamics_constraints.py`: Implements the dynamics constraints for the robotic system.
 
 ## ILQR Implementation
-iLQR Implementation
+
 The iLQR algorithm is implemented in `iLQR.py`, where we focus on optimizing the control trajectory for a 2D quadrotor system. Key components of the implementation include:
 
 **Backward Pass:**
